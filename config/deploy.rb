@@ -6,10 +6,14 @@ lock "~> 3.18.1"
 set :default_env, {
   "PATH" => "/home/deploy/.nodenv/bin:$PATH"
 }
+set :default_env, {
+  "PATH" => "/home/deploy/.rbenv/bin:$PATH"
+}
 
 set :rbenv_ruby, File.read('.ruby-version').strip
 set :rbenv_map_bins, %w{rake gem bundle ruby rails puma pumactl}
 set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} rbenv exec"
+set :rbenv_roles, :all
 
 set :nodenv_node, File.read('.node-version').strip
 set :nodenv_map_bins, %w{node npm yarn webpack}
@@ -43,7 +47,7 @@ set :puma_phased_restart, true
 append :linked_files, 'config/master.key', 'config/schedule.yml', 'public/robots.txt'
 
 # Default value for linked_dirs is []
-append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system', 'public/uploads', 'storage', 'vendor'
+append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system', 'public/uploads', 'storage'#, 'vendor'
 
 # Default value for local_user is ENV['USER']
 # set :local_user, -> { `git config user.name`.chomp }
