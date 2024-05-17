@@ -1,2 +1,138 @@
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins';
+
+$primary: rgb(147, 206, 52);
+$secondary: rgb(189, 106, 56);
+$success: shade-color($primary, 25%);
+$theme-colors: map-merge($theme-colors, ("primary": $primary, "secondary": $secondary, "success": $success));
+
+$body-bg: $primary;
+$body-color: $white;
+$dark-ratio: rgba(0, 0, 0, 0.02);
+$spacers: (
+  0: 0,
+  1: $spacer * .25,
+  2: $spacer * .5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+  6: $spacer * 6,
+  7: $spacer * 12,
+);
+
+$box-shadow-lg: 0 0.4rem 0 rgba($black, .275);
+
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+
+body {
+  height: 100vh;
+}
+
+#main-image {
+  position: fixed;
+  top: 45%;
+  right: 0;
+  width: 40vw;
+
+  @media screen and (max-width:1200px) {
+    top: 50%;
+  }
+
+  @media screen and (max-width:992px) {
+    top: 60%;
+    width: 50vw;
+  }
+
+  @media screen and (max-width:768px) {
+    top: 65%;
+    width: 60vw;
+  }
+
+  @media screen and (max-width:576px) {
+    position: absolute;
+    top: 80%;
+    width: 50vw;
+  }
+
+}
+
+.content {
+  padding-left: $spacer * 6;
+  padding-right: $spacer * 6;
+
+  @media screen and (max-width:768px) {
+    padding-left: $spacer * 3;
+    padding-right: $spacer * 3;
+  }
+
+  @media screen and (max-width:576px) {
+    padding-left: $spacer;
+    padding-right: $spacer;
+  }
+
+}
+
+.fw-800 {
+  font-weight: 800;
+}
+
+.trapez {
+  width: 100vw;
+  height: 0;
+  border-top: 100vh solid $dark-ratio;
+  border-left: 70vw solid transparent;
+  // border-right: 70vw solid rgba(0, 0, 0, 0.05);
+}
+
+.bottom-left {
+  width: 0;
+  height: 0;
+  top: 20vh;
+  border-bottom: 80vh solid $dark-ratio;
+  border-right: 40vw solid transparent;
+}
+
+.top-right {
+  width: 0;
+  height: 0;
+  left: 15vw;
+  border-bottom: 80vh solid transparent;
+  border-right: 85vw solid $dark-ratio;
+}
+
+.top-left {
+  width: 0;
+  height: 0;
+  border-top: 100vh solid $dark-ratio;
+  border-right: 100vw solid transparent;
+}
+
+$c: 30%;
+
+.flag-wrapper {
+  filter: drop-shadow($box-shadow-lg);
+}
+
+.flag {
+  left: -30%;
+  padding-left: 30%;
+
+  @media screen and (max-width:992px) {
+    left: -35%;
+    padding-left: 35%;
+    padding-right: 55%;
+  }
+
+  @media screen and (max-width:576px) {
+    left: -45%;
+    padding-left: 45%;
+    padding-right: 65%;
+  }
+
+  // width: 65vw;
+  padding-right: 40%;
+  mask: radial-gradient($c 100% at right, #0000 calc(100% - 1px), #000);
+  background: $success;
+}
