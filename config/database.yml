@@ -89,3 +89,12 @@ production:
   database: fides_production
   username: <%= ENV["FIDES_DATABASE_USERNAME"] %>
   password: <%= ENV["FIDES_DATABASE_PASSWORD"] %>
+
+staging:
+  <<: *default
+  database: fides_staging
+  host: localhost
+  username: 
+    <%= Rails.application.credentials.dig(:database, :staging, :username) %>
+  password:
+    <%= Rails.application.credentials.dig(:database, :staging, :password) %>
