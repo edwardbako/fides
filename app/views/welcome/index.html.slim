@@ -35,10 +35,12 @@
         h4.my-2.mx-4
           b Buy Now For $50
     .col-12.col-sm.col-xxl-3.mt-2
-      button.btn.btn-outline-light.rounded-pill
+      = link_to t('link.url'),
+                  target: "_blank",
+                  class: "btn btn-outline-light rounded-pill"  do
         h4.my-2.mx-4
-          b 
-            | See All Domains
+          b
+            = t "link.name"
             i.bi.bi-chevron-right
     .col-lg
   .row
