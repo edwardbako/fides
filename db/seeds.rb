@@ -7,3 +7,12 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+if Domain.count == 0 
+  200.times do
+    Domain.create(
+      name: Faker::Internet.domain_name,
+      cost: rand(2000)
+    )
+  end
+end

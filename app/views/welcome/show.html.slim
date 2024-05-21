@@ -1,0 +1,34 @@
+
+  .row
+    .col-12.col-sm-10.col-md-9.col-lg-8.col-xl-7.col-xxl-5.mt-7.text-end
+      h2.text-success.mb-0 
+        b Buy The Domain with 80% Off.
+      h1.display-1.fw-800
+        b
+          - if @domain.blank?
+            | MyDomain.Com
+          - else
+            = @domain.name
+
+    .col
+      = image_tag "working_man.png", id: "main-image", class: "img-fluid z-n1"
+  .row 
+    .col-12.col-sm.col-xxl-3.mt-2
+      button.btn.btn-secondary.text-white.rounded-pill.shadow-lg
+        h4.my-2.mx-4
+          b Buy Now
+    .col-12.col-sm.col-xxl-3.mt-2
+      = link_to t('link.url'),
+                  target: "_blank",
+                  class: "btn btn-outline-light rounded-pill"  do
+        h4.my-2.mx-4
+          b
+            = t "link.name"
+            i.bi.bi-chevron-right
+    .col-lg
+  .row
+    .col.mt-5
+      .price-banner.rounded-pill.position-relative.py-3.d-inline-block
+        h1.display-1.fw-800 
+          | USD 
+          = (@domain.present? ? @domain.cost : 1233).to_fs(:currency, precision: 0)
