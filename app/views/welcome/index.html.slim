@@ -21,7 +21,11 @@
       h2.text-success.mb-0 
         b Buy The Domain with 80% Off.
       h1.display-1.fw-800
-        b MyDomain.Com
+        b
+          - if params[:domain].blank?
+            | MyDomain.Com
+          - else
+            = params[:domain]
 
     .col
       = image_tag "working_man.png", id: "main-image", class: "img-fluid z-n1"
