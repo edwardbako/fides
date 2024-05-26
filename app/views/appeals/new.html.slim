@@ -1,0 +1,34 @@
+.row.mt-5
+  .col-xxl-4.col-xl-6.col-md-8.col-sm-10.col-12
+    h1 Contact us 
+    h4 Provide your details
+    = form_with model: @appeal, builder: CustomFormBuilder do |f|
+      .form-floating.mb-3
+        = f.text_field :name, placeholder: true
+        = f.label :name
+      
+      .form-floating.mb-3
+        = f.email_field :email, placeholder: true
+        = f.label :email
+
+      .form-floating.mb-3
+        = f.text_field :subject, placeholder: true
+        = f.label :subject
+      
+      .form-floating.mb-3
+        = f.text_area :body, placeholder: true
+        = f.label :body
+
+      = turbo_frame_tag :recaptcha
+        .form-floating.mb-2
+            - if @appeal.errors["base"].present?
+              = f.text_field :base, placeholder: true, disabled: true
+              = f.error_label :base
+        .mb-3
+          - if @show_checkbox_recaptcha
+            = recaptcha_tags noscript: false
+          - else
+            = recaptcha_v3 action: "contact", site_key: @recaptcha_site_key, turbo: true
+
+      = f.button :submit, class: "btn btn-secondary text-white rounded-pill shadow-lg" do
+        b Submit

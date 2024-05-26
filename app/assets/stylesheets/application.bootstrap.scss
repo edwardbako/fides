@@ -30,6 +30,12 @@ body {
   height: 100vh;
 }
 
+.form-floating {
+  textarea {
+    height: 10rem !important;
+  }
+}
+
 #main-image {
   position: fixed;
   top: 45%;
